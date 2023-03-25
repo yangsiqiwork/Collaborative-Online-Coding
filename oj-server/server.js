@@ -16,6 +16,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use("/", indexRouter); 
 app.use("/api/v1", restRouter); ///api/v1开头的都交给restRouter处理
 
+app.use(function(req, res){  
+  res.sendFile("index.html", {root: path.join(__dirname, '../public/')});
+});
+
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
 })
