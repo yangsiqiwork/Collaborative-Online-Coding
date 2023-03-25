@@ -33,7 +33,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 
 export class ProblemListComponent implements OnInit{
-  problems: Problem[]; 
+  // problems: Problem[]; 
+  problems: Problem[] = [];
+  
 
   // Inject global provider "data", called data here as private field
   constructor(private data: DataService){}
@@ -45,7 +47,14 @@ export class ProblemListComponent implements OnInit{
   }
 
   getProblems(): void{
-    this.problems = this.data.getProblems();
+    // this.problems = this.data.getProblems();
+    
+    this.data.getProblems()
+      .subscribe(problems => {
+        console.log("getProblems success")
+        console.log(problems)
+            this.problems = problems;
+      });
   }
   
 }

@@ -1,13 +1,15 @@
 <div class="container" *ngIf="problem">
     <div class="col-xs-12 col-md-4">
         <div>
+            <!-- <p>{{problem | json}}</p> -->
             <h2>
-                {{problem.id}}. {{problem.name}}
+                {{problem[0].id}}. {{problem[0].name}}
             </h2>
             <p>
-                {{problem.desc}}
+                {{problem[0].desc}}
             </p>
             <br/>
         </div>
     </div>
 </div>
+

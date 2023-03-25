@@ -103,7 +103,7 @@ var addProblem = function (newProblem) { //newProblem: do not have id
         // });
         ProblemModel.exists({name: newProblem.name})
             .then(function (problem) {
-                console.log(problem) //{ _id: new ObjectId("641d4461069fc3f273bf7998") } or null
+                // console.log(problem) //{ _id: new ObjectId("641d4461069fc3f273bf7998") } or null
                 if (problem) { //因为数组是object，所以即便数组中没有值，if判断的话也会被转化为true
                     console.log("reject")
                     reject("Problem name already exists");
@@ -124,12 +124,7 @@ var addProblem = function (newProblem) { //newProblem: do not have id
                     mongoProblem.save();
                     resolve(newProblem);
                 })
-                }
-
-
-                
-                        
-                
+                }                
             })
     })
 }

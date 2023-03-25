@@ -21,8 +21,15 @@ export class NewProblemComponent {
 
   constructor(private data: DataService) {}
   addProblem(): void {
-    this.data.addProblem(this.newProblem);
-    this.newProblem = Object.assign({}, DEFAULT_PROBLEM);
+    // this.data.addProblem(this.newProblem);
+    // this.newProblem = Object.assign({}, DEFAULT_PROBLEM);
     //添加后清除
+    this.data.addProblem(this.newProblem)
+      .subscribe( problem => {
+        console.log("addProblem success");
+        this.data.getProblems();
+      })
+    this.newProblem = Object.assign({}, DEFAULT_PROBLEM)
+
   }
 }
