@@ -14,6 +14,9 @@ import { RouterModule } from '@angular/router';
 import { NewProblemComponent } from './components/new-problem/new-problem.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,  
-    FormsModule  
+    FormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-q0but430kmcrf8yv.us.auth0.com',
+      clientId: 'Wk8URPptpeZGAk6VUFwXfXoVrKmLElsw',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [
   //   {

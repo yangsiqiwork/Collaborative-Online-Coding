@@ -48,13 +48,17 @@ export class ProblemListComponent implements OnInit{
 
   getProblems(): void{
     // this.problems = this.data.getProblems();
-    
+    console.log("call ProblemListComponent.getProblems");
+
     this.data.getProblems()
       .subscribe(problems => {
         console.log("getProblems success")
-        console.log(problems)
-            this.problems = problems;
+        console.log(problems);
+        this.problems = problems;
       });
+  }
+  oonAddProblemButtonClick() {
+    this.getProblems();
   }
   
 }

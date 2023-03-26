@@ -3,7 +3,7 @@ import { Problem } from "../models/problem.model";
 import {PROBLEMS} from "../mock-problems";
 import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { Observable, throwError,from,of } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import * as bodyParser from 'body-parser';
 
 const httpOptions = {

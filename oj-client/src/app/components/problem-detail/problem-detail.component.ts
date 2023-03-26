@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Problem } from 'src/app/models/problem.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'; //get the url to choose the id
 import { DataService } from 'src/app/services/data.service';
+
 
 @Component({
   selector: "app-problem-detail",
@@ -9,7 +10,8 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./problem-detail.component.css']
 })
 export class ProblemDetailComponent {
-  myObject = {id:1, name:"Two Sum", desc:"None"}
+  // myObject = {id:1, name:"Two Sum", desc:"None"}
+
   problem: Problem;
 
   constructor(
@@ -18,21 +20,39 @@ export class ProblemDetailComponent {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    // this.route.params.subscribe(params => {
+    //   // this.problem = this.data.getProblem(+ params["id"]);
+      
+    //   console.log("getProblem before")
+    //   this.data.getProblem(+ params['id'])
+    //     .subscribe(res => {
+    //       console.log(res)
+    //       console.log("getRes success")
+    //       this.problem = res;
+    //       console.log(this.problem)
+    //       console.log("getProblem success")    
+    //     });
+    // })
+
+    this.getProblem();
+  }
+
+  getProblem() {
+        this.route.params.subscribe(params => {
       // this.problem = this.data.getProblem(+ params["id"]);
       
       console.log("getProblem before")
       this.data.getProblem(+ params['id'])
         .subscribe(res => {
-          
-          console.log(res)
-          console.log("getRes success")
+          console.log(res);
+          console.log("getRes success");
           this.problem = res;
-          console.log(this.problem)
-          console.log("getProblem success")
+          console.log(this.problem);
+          console.log("getProblem success");
         });
     })
-  }
+  };
+  
   
   
 }

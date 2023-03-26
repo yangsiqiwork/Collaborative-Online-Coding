@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Problem } from 'src/app/models/problem.model';
 import { DataService } from 'src/app/services/data.service';
+
 
 const DEFAULT_PROBLEM: Problem = Object.freeze({
   id: 0,
@@ -15,6 +16,9 @@ const DEFAULT_PROBLEM: Problem = Object.freeze({
   styleUrls: ['./new-problem.component.css']
 })
 export class NewProblemComponent {
+  
+  @Output() buttonClick = new EventEmitter<void>();
+
   public difficulties = ["Easy", "Medium","Hard", "Super"];
 
   newProblem: Problem = Object.assign({}, DEFAULT_PROBLEM);
@@ -25,11 +29,12 @@ export class NewProblemComponent {
     // this.newProblem = Object.assign({}, DEFAULT_PROBLEM);
     //添加后清除
     this.data.addProblem(this.newProblem)
-      .subscribe( problem => {
+      .subscribe(problem => {
         console.log("addProblem success");
-        this.data.getProblems();
+        
       })
     this.newProblem = Object.assign({}, DEFAULT_PROBLEM)
-
+    this.buttonClick.emit();
   }
+
 }
