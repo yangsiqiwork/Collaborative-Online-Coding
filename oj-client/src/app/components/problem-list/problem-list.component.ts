@@ -57,7 +57,7 @@ export class ProblemListComponent implements OnInit{
         this.problems = problems;
       });
   }
-  oonAddProblemButtonClick() {
+  onAddProblemButtonClick() {
     this.getProblems();
   }
   

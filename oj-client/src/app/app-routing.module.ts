@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProblemDetailComponent } from './components/problem-detail/problem-detail.component';
 import { ProblemListComponent } from './components/problem-list/problem-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [ 
   {
@@ -18,9 +19,15 @@ const routes: Routes = [
     component: ProblemDetailComponent
   },
   {
+    path: "profile",
+    component: ProfileComponent
+  },
+
+  {
     path: "**",
     redirectTo: "problems"
   }
+  
 ];
 
 @NgModule({
