@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Problem } from 'src/app/models/problem.model';
 import { ActivatedRoute } from '@angular/router'; //get the url to choose the id
 import { DataService } from 'src/app/services/data.service';
+import * as ace from 'ace-builds';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ProblemDetailComponent {
   // myObject = {id:1, name:"Two Sum", desc:"None"}
+
 
   problem: Problem;
 
