@@ -13,10 +13,12 @@ import { DataService} from "./services/data.service";
 import { RouterModule } from '@angular/router';
 import { NewProblemComponent } from './components/new-problem/new-problem.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CollaborationService } from './services/collaboration.service';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EditorComponent } from './components/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ProblemDetailComponent,
     NewProblemComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,9 @@ import { ProfileComponent } from './components/profile/profile.component';
   //   provide: "data",
   //   useClass: DataService
   // }
-  DataService
+  DataService,
+  CollaborationService
+
 ],
   bootstrap: [AppComponent]
 })

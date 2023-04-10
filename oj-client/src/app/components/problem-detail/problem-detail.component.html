@@ -1,15 +1,22 @@
 <div class="container" *ngIf="problem">
-    <div class="col-xs-12 col-md-4">
-        <div>
-            <!-- <p>{{problem | json}}</p> -->
-            <h2>
-                {{problem[0].id}}. {{problem[0].name}}
-            </h2>
-            <p>
-                {{problem[0].desc}}
-            </p>
-            <br/>
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <div style="margin-top: 20px;">
+                <!-- <p>{{problem | json}}</p> -->
+                <h2>
+                    {{problem[0].id}}. {{problem[0].name}}
+                </h2>
+                <p>
+                    {{problem[0].desc}}
+                </p>
+                <br/>
+            </div>
+        </div>
+        <div class=" col-md-8">
+            <!-- <p>"app-editor"</p> -->
+            <app-editor></app-editor>
         </div>
     </div>
 </div>
+
 
