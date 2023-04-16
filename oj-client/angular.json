@@ -25,12 +25,19 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
 
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "./node_modules/ace-builds/src-min-noconflict/ace.js",
+              "./node_modules/ace-builds/src-min-noconflict/theme-chrome.js",
+              "./node_modules/ace-builds/src-min-noconflict/mode-java.js",
+              "./node_modules/ace-builds/src-min-noconflict/mode-python.js",
+              "./node_modules/ace-builds/src-min-noconflict/mode-c_cpp.js",
+              "./node_modules/ace-builds/src-min-noconflict/mode-javascript.js"
             ]
           },
           "configurations": {
@@ -39,7 +46,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
