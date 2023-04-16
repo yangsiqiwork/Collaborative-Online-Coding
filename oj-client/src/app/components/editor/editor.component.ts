@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CollaborationService } from 'src/app/services/collaboration.service';
 
 declare var ace: any; //set to global variable to connect with ace-builds js...
 
@@ -35,8 +36,7 @@ export class EditorComponent {
     `
   }
 
-  constructor() {
-
+  constructor(private collaboration: CollaborationService) {
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class EditorComponent {
     this.editor.session.setMode("ace/mode/java");
     this.resetEditor();
     this.editor.$blockScrolling = Infinity;
-    
+    this.collaboration.init();
   }
 
   setLanguage(language: string): void {
