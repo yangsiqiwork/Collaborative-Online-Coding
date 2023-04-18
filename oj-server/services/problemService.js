@@ -38,18 +38,11 @@
 
 var ProblemModel = require("../models/problemModel");
 
-
-      //定义getProblems：
+//定义getProblems：
 var getProblems = function () {
     return new Promise((resolve, reject) => {
         // resolve(problems); //把现有的problems都扔进去
-        // ProblemModel.find({}, function (err, problems) {
-        //     if (!err) {
-        //         resolve(problems);
-        //     } else {
-        //         reject(err);
-        //     }
-        // });
+        
         ProblemModel.find({})
         .then(function (problems) {
             resolve(problems);
@@ -63,13 +56,7 @@ var getProblems = function () {
 var getProblem = function (id) {
     return new Promise((resolve, reject) => {
         // resolve(problems.find(problem => problem.id === id)); 
-        // ProblemModel.findOne({id: id}, function (err, problem) {
-        //     if (!err) {
-        //         resolve(problem);
-        //     } else {
-        //         reject(err);
-        //     }
-        // });
+        
         ProblemModel.find({id: id})
         .then(function (problem) {
             resolve(problem);
