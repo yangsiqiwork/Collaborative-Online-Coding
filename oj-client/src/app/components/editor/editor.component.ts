@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CollaborationService } from 'src/app/services/collaboration.service';
 
+import { ActivatedRoute } from '@angular/router';
+
 declare var ace: any; //set to global variable to connect with ace-builds js...
 
 
@@ -16,6 +18,8 @@ export class EditorComponent {
 
   public languages: string[] = ['Java', 'C++', "Python"];
   language: string = 'Java'
+
+  sessionId: string;
 
   defaultContent = {
     'Java' : `public class Example {
@@ -36,17 +40,37 @@ export class EditorComponent {
     `
   }
 
-  constructor(private collaboration: CollaborationService) {
+  constructor(private collaboration: CollaborationService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.params
+      .subscribe(params => {
+        this.sessionId = params['id'];
+        this.initEditor();
+      });
+  }
+
+  initEditor() {
     this.editor = ace.edit("editor");
     this.editor.resize();
     this.editor.setTheme("ace/theme/chrome");
-    this.editor.session.setMode("ace/mode/java");
+    // this.editor.session.setMode("ace/mode/java");
     this.resetEditor();
     this.editor.$blockScrolling = Infinity;
-    this.collaboration.init();
+    
+    document.getElementsByTagName('textarea')[0].focus();
+
+    this.collaboration.init(this.editor, this.sessionId);
+    this.editor.lastAppliedChange = null;
+
+    this.editor.on('change', (e) => { //e:event
+      console.log('editor changes: ' + JSON.stringify(e)); //便于调试
+      if (this.editor.lastAppliedChange != e) { //不是重复的change
+        this.collaboration.change(JSON.stringify(e));
+      }
+    });
   }
 
   setLanguage(language: string): void {

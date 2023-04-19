@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Problem } from "../models/problem.model";
 import {PROBLEMS} from "../mock-problems";
 import { HttpClient, HttpHeaders, } from '@angular/common/http';
-import { Observable, throwError,from,of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import * as bodyParser from 'body-parser';
+import { Observable } from 'rxjs';
+import { catchError} from 'rxjs/operators';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,7 +27,7 @@ export class DataService {
   // getProblems(): Problem[] {
     // return this.problems;
 
-    return this.http.get<Problem[]>("api/v1/problems") //调用这个api，返回observable <type>
+    return this.http.get<Problem[]>("api/v1/problems") //调用这个api，监听，返回observable <type>
   }
 
   // 获取某一problem
@@ -36,11 +36,6 @@ export class DataService {
   // getProblem(id: number): Problem {
   //   return this.problems.find((problem) => problem.id === id);
     
-    // return this.http.get("api/v1/problems/${id}")
-    //                   .then((res: Response) => res.json())
-    //                   .catch(this.handleError)
-    // console.log("getProblem enter")
-    // return this.http.get<Problem>("api/v1/problems/${id}");
     return this.http.get<Problem>(`api/v1/problems/${id}`);
   }
 
@@ -64,8 +59,5 @@ export class DataService {
       return error;
     };
   }
-
- 
-
 
 }
