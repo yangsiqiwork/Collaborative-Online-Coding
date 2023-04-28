@@ -66,11 +66,21 @@ export class EditorComponent {
     this.editor.lastAppliedChange = null;
 
     this.editor.on('change', (e) => { //e:event
-      console.log('editor changes: ' + JSON.stringify(e)); //便于调试
-      if (this.editor.lastAppliedChange != e) { //不是重复的change
-        this.collaboration.change(JSON.stringify(e));
+      console.log('editor changes: ' + JSON.stringify(e)); 
+      if (this.editor.lastAppliedChange != e) { 
+        this.collaboration.change(JSON.stringify(e)); 
       }
     });
+
+    this.editor.getSession().getSelection().on("changeCursor", () =>{
+      let cursor = this.editor.getSession().getSelection().getCursor();
+      console.log('cursor moves: ' + JSON.stringify(cursor)); 
+      this.collaboration.cursorMove(JSON.stringify(cursor));
+    });
+
+    // this.collaboration.restoreBuffer();
+
+
   }
 
   setLanguage(language: string): void {
