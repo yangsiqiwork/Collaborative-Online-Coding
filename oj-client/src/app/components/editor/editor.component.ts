@@ -78,7 +78,7 @@ export class EditorComponent {
       this.collaboration.cursorMove(JSON.stringify(cursor));
     });
 
-    // this.collaboration.restoreBuffer();
+    this.collaboration.restoreBuffer();
 
 
   }
