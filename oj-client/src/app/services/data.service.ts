@@ -51,6 +51,14 @@ export class DataService {
       );
   }
 
+  
+  buildAndRun(data): Observable<Object> {
+    return this.http.post<Problem>('/api/v1/build_and_run', data, httpOptions) 
+      .pipe(
+        catchError(this.handleError<Problem>('buildAndRun faild', data))
+      );
+  }
+
   private handleError<Problem> (operation = 'operation', result: Problem) {
     return (error: any): Observable<Problem> => {
  

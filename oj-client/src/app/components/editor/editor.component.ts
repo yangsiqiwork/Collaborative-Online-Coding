@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CollaborationService } from 'src/app/services/collaboration.service';
 
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 declare var ace: any; //set to global variable to connect with ace-builds js...
 
@@ -20,6 +21,8 @@ export class EditorComponent {
   language: string = 'Java'
 
   sessionId: string;
+
+  output: string;
 
   defaultContent = {
     'Java' : `public class Example {
@@ -41,7 +44,8 @@ export class EditorComponent {
   }
 
   constructor(private collaboration: CollaborationService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private data: DataService) {
   }
 
   ngOnInit() {
@@ -97,11 +101,26 @@ export class EditorComponent {
     
     // this.editor.session.setMode("ace/mode/java");
     this.editor.setValue(this.defaultContent[this.language]);
+    this.output = '';
   }
 
   submit(): void {
     let userCode = this.editor.getValue();
-    console.log(userCode)
+    let data = {
+      user_code: userCode, //ace editor 的内容
+      lang: this.language.toLowerCase() //得到语言
+    };
+    this.data.buildAndRun(data)
+      .subscribe((res: any) => {
+        console.log(res)
+        if ('text' in res) {
+          this.output = res.text;
+        } else {
+          // Handle the case when the `text` property does not exist
+        }
+        // this.output = res.text;
+      }); //得到res，更新output
+    // console.log(userCode)
   }
 
 }
