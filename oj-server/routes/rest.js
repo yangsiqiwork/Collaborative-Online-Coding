@@ -7,7 +7,7 @@ var jsonParser = bodyParser.json(); //使用json-parser
 var node_rest_client = require('node-rest-client').Client;
 var rest_client = new node_rest_client();
 
-EXCUTOR_SERVER_URL = 'http://localhost:5000/build_and_run';
+EXCUTOR_SERVER_URL = 'http://127.0.0.1:5000/build_and_run';
 
 rest_client.registerMethod('build_and_run', EXCUTOR_SERVER_URL, 'POST');
 
