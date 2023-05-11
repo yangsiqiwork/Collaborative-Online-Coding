@@ -16,7 +16,7 @@ SOURCE_FILE_NAMES = {
 }
 
 BINARY_NAMES = {
-    'java': 'Exmple',
+    'java': 'Example',
     'python': 'example.py'
 }
 
