@@ -10,6 +10,8 @@
 
 oj-client/dist/
 
+*.pyc
+
 # dependencies
 node_modules/
 
@@ -47,3 +49,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environments
+oj-env/
+

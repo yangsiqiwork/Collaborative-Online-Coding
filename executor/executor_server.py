@@ -1,3 +1,4 @@
+import executor_utils as eu
 import json
 
 from flask import Flask
@@ -6,9 +7,9 @@ from flask import jsonify
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello(): 
-    return "Hello World!"
+# @app.route("/")
+# def hello(): 
+#     return "Hello World!"
 
 @app.route("/build_and_run", methods = ["POST"])
 def build_and_run():
@@ -19,9 +20,14 @@ def build_and_run():
     code = data['code']
     lang = data['lang']
 
-    print( "API got called with code: %s in %s" % (code,lang))
+    print( f"API got called with code: {code} in {lang}" )
 
-    return jsonify({"hello": "world!"})
+    result = eu.build_and_run(code, lang)
+    # print("===============================================")
+    # print(type(result))
+    # print(result)
+    return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    eu.load_image() #确定本地存在image
+    app.run(debug=True) #再执行外部命令
