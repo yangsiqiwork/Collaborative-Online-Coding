@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -10,8 +10,23 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class ProfileComponent {
 
+  email: string;
+  username: string;
+  
   constructor(public auth: AuthService, public httpClient: HttpClient) {}
 
+  ngOnInit() {
+    this.getUserProfile();
+  }
+
+  getUserProfile() {
+    this.auth.idTokenClaims$
+      .subscribe((claims: any) => {
+        this.email = claims.email;
+        this.username = claims.nickname;
+      });
+  }
+  
   public resetPassword(): void {
  
     
