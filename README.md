@@ -1,7 +1,9 @@
 # COJ
 Collaborative Online Judge System Web Service Development
 
-https://github.com/yangsiqiwork/Collaborative-Online-Coding/assets/126734555/9a9d340a-315b-4dbe-86a0-f4180686c803
+
+https://github.com/yangsiqiwork/Collaborative-Online-Coding/assets/126734555/3ef219cb-7f9d-443a-8d79-e269d4e56d48
+
 
 This project is a Collaborative Online Judge (COJ) system, a web-based platform that enables multiple users to collaborate on coding problems in real-time to improve their skills and prepare for technical interviews. The following features were implemented:
 
